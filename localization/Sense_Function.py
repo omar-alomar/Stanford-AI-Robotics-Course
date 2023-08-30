@@ -14,12 +14,13 @@ pMiss = 0.2
 
 def sense(p, Z):
     psum = 0 
-    for j in p:
-        if j == Z:
-          j *= pHit
+    pdf = [0] * 5
+    for j in range(len(p)):
+        if world[j] == Z:
+          pdf[j] = p[j] * pHit
         else:
-          j *= pMiss
+          pdf[j] = p[j] * pMiss
         psum += j
-    return psum
+    return pdf
 
-print sense(p,Z)
+print (sense(p,Z))
